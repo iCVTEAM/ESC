@@ -1,0 +1,50 @@
+random_seed: 42
+task_name: ESC-DERS_XR
+ckpt:
+  ckpt_base_path: ./ckpt
+logger:
+  logging_path: ./logs
+dataset:
+  dataset: DERS_XR
+  data_path: ./data/DERS_XR
+  width: 346
+  height: 260
+  num_classes: 11
+  label_convert: NoConvert
+model:
+  arch: ESC
+  backbone: mit_b2
+  pretrained_weights: ./pretrained/mit_b2.pth
+  vqvae_weights: ./pretrained/vqvae_ders.pth.tar
+  criterion: LossForESC
+  loss_weight: [1, 0.1]
+  num_embeddings: 128
+  scheduler: WarmupPoly01
+  finetune_weights: ./ckpt/ESC-DERS_XS/ESC-DERS_XS.pth.tar
+train:
+  partition: Train
+  data_inputs: [RGB, DVS/BIN5, SEG/RAW]
+  data_keys: [RGB, DVS, SEG]
+  dummy: [False, False, False]
+  batch_size: 2
+  num_workers: 2
+  num_epochs: 50
+  learning_rate: 6.e-5
+  freeze_bn: True
+  crop_size: 256
+val:
+  partition: Valid
+  data_inputs: [RGB, DVS/BIN5, SEG/RAW]
+  data_keys: [RGB, DVS, SEG]
+  dummy: [False, False, False]
+  batch_size: 2
+  num_workers: 2
+  size: [260, 346]
+test:
+  partition: Test
+  data_inputs: [RGB, DVS/BIN5, SEG/RAW]
+  data_keys: [RGB, DVS, SEG]
+  dummy: [False, False, False]
+  batch_size: 2
+  num_workers: 2
+  size: [260, 346]

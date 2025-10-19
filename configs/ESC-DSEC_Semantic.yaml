@@ -1,0 +1,49 @@
+random_seed: 42
+task_name: ESC-DSEC_Semantic
+ckpt:
+  ckpt_base_path: ./ckpt
+logger:
+  logging_path: ./logs
+dataset:
+  dataset: DSEC
+  data_path: ./data/DSEC
+  width: 640
+  height: 440
+  num_classes: 11
+  label_convert: NoConvert
+model:
+  arch: ESC
+  backbone: mit_b2
+  pretrained_weights: ./pretrained/mit_b2.pth
+  vqvae_weights: ./pretrained/vqvae_dsec.pth.tar
+  criterion: LossForESC
+  loss_weight: [1, 0.1]
+  num_embeddings: 128
+  scheduler: Cyclic01
+train:
+  partition: Train
+  data_inputs: [RGB/NORM, DVS/NORM/BIN5, SEG/RAW]
+  data_keys: [RGB, DVS, SEG]
+  dummy: [False, False, False]
+  batch_size: 16
+  num_workers: 16
+  num_epochs: 60
+  learning_rate: 6.e-5
+  freeze_bn: True
+  crop_size: 256
+val:
+  partition: Valid
+  data_inputs: [RGB/NORM, DVS/NORM/BIN5, SEG/RAW]
+  data_keys: [RGB, DVS, SEG]
+  dummy: [False, False, False]
+  batch_size: 8
+  num_workers: 8
+  size: [440, 640]
+test:
+  partition: Test
+  data_inputs: [RGB/NORM, DVS/NORM/BIN5, SEG/RAW]
+  data_keys: [RGB, DVS, SEG]
+  dummy: [False, False, False]
+  batch_size: 8
+  num_workers: 8
+  size: [440, 640]
