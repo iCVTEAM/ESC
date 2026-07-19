@@ -107,7 +107,7 @@ The evaluation results are summarized in the table below:
 |ESC-DERS_XS|0.932706|0.752572|0.670984|
 |ESC-DERS_XR|0.979211|0.707526|0.652239|
 |ESC-DSEC_Xtrm|0.881835|0.594495|0.508670|
-|ESC-DERS_Semantic|0.948510|0.786135|0.710352|
+|ESC-DSEC_Semantic|0.948510|0.786135|0.710352|
 
 ## Training and Evaluating Examples
 
@@ -134,10 +134,14 @@ If you find our work useful for your research, please cite the following paper.
 ```bib
 @inproceedings{
     bao2025recoding,
-    title={Re-coding for Uncertainties: Edge-awareness Semantic Concordance for Resilient Event-{RGB} Segmentation},
-    author={Bao, Nan and Zhao, Yifan and Zhu, Lin and Li, Jia},
-    booktitle={The Thirty-ninth Annual Conference on Neural Information Processing Systems},
-    year={2025},
-    url={https://openreview.net/forum?id=uG9F00zKJF}
+    author = {Bao, Nan and Zhao, Yifan and Zhu, Lin and Li, Jia},
+    booktitle = {Advances in Neural Information Processing Systems},
+    editor = {D. Belgrave and C. Zhang and H. Lin and R. Pascanu and P. Koniusz and M. Ghassemi and N. Chen},
+    pages = {101270--101298},
+    publisher = {Curran Associates, Inc.},
+    title = {Re-coding for Uncertainties: Edge-awareness Semantic Concordance for Resilient Event-{RGB} Segmentation},
+    url = {https://proceedings.neurips.cc/paper_files/paper/2025/file/92c020da2740ec2ace29e8e7d69b4483-Paper-Conference.pdf},
+    volume = {38},
+    year = {2025}
 }
 ```
